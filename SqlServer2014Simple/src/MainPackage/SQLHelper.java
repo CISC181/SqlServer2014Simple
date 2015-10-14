@@ -17,18 +17,37 @@ public class SQLHelper {
 	private PreparedStatement pstmt;
 	private CallableStatement cstmt;
 
-	public SQLHelper() {
+	public SQLHelper(eDBType DB) {
 		
-		this.DriverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-		//this.connectionURL = "jdbc:sqlserver://jcs4hftqiv.database.windows.net:1433;databaseName=CISC181";
-		this.connectionURL = "jdbc:sqlserver://jcs4hftqiv.database.windows.net";
-		this.connectionPort = "1433";
-		this.connectionDBName = "CISC181";
-		this.connectionString = this.connectionURL + ":" + this.connectionPort + ";" + "databaseName=" + this.connectionDBName;
+
+		System.out.println(DB);
 		
+		if (DB.toString() == eDBType.ORACLE.toString())
+		{
+			System.out.println("Oracle Selected");	
+			this.DriverName = "oracle.jdbc.driver.OracleDriver";
+			this.connectionURL = "jdbc:oracle:thin:@localhost";
+			this.connectionPort = "1521";
+			this.connectionDBName = "xe";
+			this.connectionString = this.connectionURL + ":" + this.connectionPort + ":" + this.connectionDBName;
+			System.out.println(this.connectionString);
+			
+			this.userName = "CISC181";
+			this.password = "Section1";			
+		}
+		else if (DB.toString() == eDBType.SQLSERVER.toString())
+		{
+			System.out.println("SQL Server Selected");
+			this.DriverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+			this.connectionURL = "jdbc:sqlserver://jcs4hftqiv.database.windows.net";
+			this.connectionPort = "1433";
+			this.connectionDBName = "CISC181";
+			this.connectionString = this.connectionURL + ":" + this.connectionPort + ";" + "databaseName=" + this.connectionDBName;
+			this.userName = "CISC181";
+			this.password = "Section1";
+
+		}				
 		
-		this.userName = "CISC181";
-		this.password = "Section1";
 	}
 
 	/**
