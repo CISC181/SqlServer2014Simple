@@ -8,24 +8,20 @@ public class SimpleInsert {
 	public static void main(String[] args) throws SQLException {
 
 		try {
-			/*
+			
 			InsertRecordSproc();
 			
-			InsertRecord();
+			//InsertRecord();
+			/*
 			UpdateRecord();
 			DeleteRecord();
 			*/
 
 			
-			iStudent i = null;
-			
-			i.setStuID(1);
-			i.setStuName("Bobby");
-			
-			System.out.println(i.getStuName());
-			
-			ArrayList<Person> People = new ArrayList<Person>();
-			Person p = new Person();
+
+
+			ArrayList<Student> People = new ArrayList<Student>();
+			Student p = new Student();
 			
 			ResultSet resultSet = SelectRecords();
 			while (resultSet.next()) {
@@ -142,7 +138,7 @@ public class SimpleInsert {
 			
 			CallableStatement proc = sqlHelper.callableStatement(sql);
 			proc.registerOutParameter(1, java.sql.Types.INTEGER);
-			proc.setString(2, "Jim");			
+			proc.setString(2, "Bob");			
 			proc = sqlHelper.executeCallableStatement(proc);
 			
 			iStuID = proc.getInt(1);

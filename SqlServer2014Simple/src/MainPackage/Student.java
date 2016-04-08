@@ -1,15 +1,15 @@
 package MainPackage;
 
-public class Person implements iStudent {
+public class Student implements iStudent {
 
 	private int StuID;
 	private String StuName;
 	
-	public Person()
+	public Student()
 	{
 		
 	}
-	public Person(int StuID, String StuName)
+	public Student(int StuID, String StuName)
 	{
 		this.StuID = StuID;
 		this.StuName = StuName;
